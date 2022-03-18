@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import {Routes, Route} from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar';
+import StarShips from './page/StarShipList/StarShipList';
+import ShipDetails from './page/ShipDetails/ShipDetails';
+
 import './App.css';
 
 function App() {
+  const [navItems, setNavItems] = useState([
+    {url: "/star-ships", name: "All Starships"}
+  ])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <NavBar navItems={navItems}/>
+     <Routes>
+       <Route path="/star-ships" element={<StarShips />}/>
+       <Route path="/ship-details" element={<ShipDetails />}/>
+     </Routes>
+    </>
   );
 }
 
